@@ -1,0 +1,30 @@
+name: Build Offline Desktop App (.exe)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main", "master"]
+
+jobs:
+  build-windows-exe:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Windows Portable .exe
+        run: npm run dist:win
+
+      - name: Upload Windows .exe Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Civil-Complaint-Offline-Windows-EXE
+          path: dist/*.exe
