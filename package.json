@@ -1,0 +1,37 @@
+{
+  "name": "civil-complaint-generator-desktop",
+  "version": "1.0.0",
+  "description": "범용 민사 이행의 소 소장 및 지급명령신청서 오프라인 자동작성 프로그램",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win portable",
+    "dist:mac": "electron-builder --mac dmg"
+  },
+  "build": {
+    "appId": "kr.legal.civilcomplaint.offline",
+    "productName": "민사소장_지급명령_자동작성기",
+    "files": [
+      "index.html",
+      "main.js",
+      "manifest.json",
+      "sw.js",
+      "icon-512.png",
+      "icon-192.png",
+      "apple-touch-icon.png",
+      "favicon.png"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "icon-512.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icon-512.png"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
